@@ -1,0 +1,21 @@
+http{
+     upstream backend5 {
+       
+        server 127.0.0.1:5000;
+      
+    }
+    
+    server {
+        
+        listen 4085;
+        location / {
+            proxy_pass http://backend5;
+        }
+    }
+
+}
+events
+{
+   worker_connections 768;
+   #multi_accept on;
+}    
